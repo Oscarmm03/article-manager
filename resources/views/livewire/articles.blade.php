@@ -7,11 +7,11 @@
         <div class="flex justify-between">
             <div>
                 <div>
-                    <input wire:model.live="filter" type="search" placeholder="Buscar" class="shadow appearance-none border rouded w-full py-2 px-3
+                    <input wire:model.live="filter" type="search" placeholder="Buscar" class="shadow appearance-none border rounded w-full py-2 px-3
                      text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-blue-400" name="" id="" />
                 </div>
                 <div class="mr-2">
-                    <input type="checkbox" class="mr-2 leading-tight" name="" wire:model.live="active"/>ver solo activos <!-- boton para ver solo los activos -->
+                    <input type="checkbox" class="mr-2 leading-tight" name="" wire:model.live="active" />ver solo activos <!-- boton para ver solo los activos -->
                 </div>
             </div>
         </div>
@@ -20,20 +20,30 @@
             <thead>
                 <tr><!-- Cabecera -->
                     <th class="px-4 py-2">
-                        <div class="flex items-center">Id</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('id')">Id</button> 
+                        </div>
                     </th>
                     <th class="px-4 py-2">
-                        <div class="flex items-center">Descripcción</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('name')">Descripcción</button>
+                        </div>
                     </th>
                     <th class="px-4 py-2">
-                        <div class="flex items-center">Precio</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('price')">Precio</button>
+                        </div>
                     </th>
                     <th class="px-4 py-2">
-                        <div class="flex items-center">Cantidad</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('quantity')">Cantidad</button>
+                        </div>
                     </th>
+                    @if(!$active)
                     <th class="px-4 py-2">
                         Status
                     </th>
+                    @endif
                     <th class="px-4 py-2">
                         Acción
                     </th>
@@ -46,7 +56,9 @@
                     <td class="rounded border px-4 py-2">{{$article->name}}</td>
                     <td class="rounded border px-4 py-2">{{number_format($article->price, 2)}}</td>
                     <td class="rounded border px-4 py-2">{{$article->quantity}}</td>
-                    <td class="rounded border px-4 py-2">{{$article->status ? 'Activo':'Inactivo'}}</td>
+                    @if (!$active)
+                    <td class="rounded border px-4 py-2">{{$article->status ? 'Activo':'Inactivo'}}</td>     
+                    @endif
                     <td class="rounded border px-4 py-2">Editar / Eliminar</td>
 
                 </tr>
