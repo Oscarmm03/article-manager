@@ -54,10 +54,11 @@ class Articles extends Component
     }
     public function sortBy($field)
     {
-    dd($field); // Verificar si el campo se está recibiendo correctamente
-
-    $this->sortAsc = $this->sortBy === $field ? !$this->sortAsc : true;
-    $this->sortBy = $field;
+    //dd($field); // Verificar si el campo se está recibiendo correctamente
+        if($field == $this->sortBy){
+            $this->sortAsc = !$this->sortAsc;
+        }
+        $this->sortBy = $field;
     }
 
 }

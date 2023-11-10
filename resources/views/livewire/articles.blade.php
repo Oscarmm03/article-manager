@@ -21,7 +21,25 @@
                 <tr><!-- Cabecera -->
                     <th class="px-4 py-2">
                         <div class="flex items-center">
-                            <button wire:click="sortBy('id')">Id</button> 
+                            <button wire:click="sortBy('id')">Id</button>
+
+                        @if( $sortBy == 'id')
+                            @if(!$sortAsc)
+                                <span w-4 h-4 ml-2>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                                </span>
+                            @endif
+                                @if($sortAsc)
+                                    <span w-4 h-4 ml-2>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                    </svg>  
+                                    </span>
+                                @endif
+                        @endif
+
                         </div>
                     </th>
                     <th class="px-4 py-2">
